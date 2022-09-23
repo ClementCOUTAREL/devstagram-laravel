@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LikeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\FollowController;
@@ -31,6 +32,10 @@ Route::post('/register', [RegisterController::class, 'store'])->name('register')
 Route::post('/logout', [LogoutController::class,'store'])->name('logout');
 
 // Post
+//      Like
+Route::post('/post/{post}/like', [LikeController::class, "store"])->name('post.like');
+Route::delete('/post/{post}/like', [LikeController::class, "destroy"]);
+//      Editing
 Route::get('/post/{post}/edit', [PostController::class, 'edit'])->name('post.edit');
 Route::get('/post/create', [PostController::class, 'index'])->name('post.create');
 Route::post('/post/create', [PostController::class, 'store'])->name('post.create');
@@ -49,6 +54,9 @@ Route::delete('/{user:name}/follow', [FollowController::class, 'destroy'])->name
 // Profile
 Route::get('/myprofile', [ProfileController::class, 'index'])->name('profile');
 Route::post('/myprofile', [ProfileController::class, 'store']);
+Route::get('/myprofile/delete', [ProfileController::class, 'show'])->name('profile.delete');
+Route::delete('/myprofile/delete', [ProfileController::class, 'destroy']);
+
 
 // Dashboard
 Route::get('/{user:name}', [HomeController::class, 'index'])->name('home');

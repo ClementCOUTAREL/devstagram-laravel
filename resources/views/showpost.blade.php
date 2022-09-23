@@ -19,13 +19,13 @@
         <div class="w-1/2 flex flex-col items-center">
             <div class="w-full flex flex-row items-center mb-4">
                 <h3>Title:</h3>
-                <input type="text" name="title" value="{{ $post->title }}" class="w-full border rounded-lg p-2">
+                <p class=""> {{ $post->title }} </p>
             </div>
             <div class="w-full flex flex-col mb-8">
                 <h3>Content:</h3>
-                <textarea name="content" class="w-full border rounded-lg p-2">
+                <p class="">
                     {{ $post->content }}
-                </textarea>
+                </p>
             </div>
             @auth
                 <div>

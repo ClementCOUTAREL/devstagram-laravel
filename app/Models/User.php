@@ -3,6 +3,7 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Models\Like;
 use App\Models\Post;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
@@ -47,14 +48,22 @@ class User extends Authenticatable
      * Get all of the posts for the User
      
      */
-    public function posts(): HasMany
+    public function posts()
     {
         return $this->hasMany(Post::class);
+    }
+
+    public function likes(){
+        return $this->hasMany(Like::class);
     }
 
     public function followers()
     {
         return $this->belongsToMany(User::class, 'follows', 'user_id', 'follower_id');
+    }
+
+    public function followings(){
+       return $this->belongsToMany(User::class, 'follows', 'follower_id', 'user_id'); 
     }
 
     public function followed(User $user){

@@ -48,8 +48,6 @@ class PostController extends Controller
         'content' => ["required", 'min:10']
        ]);
 
-
-
        $newPost = Post::find($post->id);
        $newPost->title = $request->title;
        $newPost->content = $request->content;
@@ -61,7 +59,9 @@ class PostController extends Controller
     }
 
     public function destroy(Request $request, Post $post){
-        dd('Destroy');
+        $request->user()->posts()->where('id',$post->id)->delete();
+
+        return back();
     }
 
 }

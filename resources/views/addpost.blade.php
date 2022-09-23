@@ -31,7 +31,7 @@
             <div class="w-full flex flex-row items-center mb-4">
                 <label for="content" class="w-1/3 mr-4">Your post:</label>
                 <textarea id="content" name="content" class="w-full border rounded-lg p-2 @error('content') border-red-500 @enderror "
-                    required value="{{ old('content') }}"></textarea>
+                    required>{{ old('content') }}</textarea>
             </div>
             @error('content')
                 <p class="block bg-red-300 text-black border-red-500 mb-4 p-3 rounded-sm">{{ $message }}</p>

@@ -18,11 +18,15 @@ class HomeController extends Controller
     }
 
      public function index(User $user) {
-        $posts = Post::where('user_id', auth()->user()->id)->get();
+        $posts = Post::where('user_id', $user->id)->get();
+
+        $ids = auth()->user()->followings->pluck('id')->toArray();
+        $followedPosts = Post::whereIn('user_id', $ids)->get();
         
          return view('welcome', [
             'user' => $user,
             'posts' => $posts,
+            'followed_posts' => $followedPosts
          ]);
      }    
 }

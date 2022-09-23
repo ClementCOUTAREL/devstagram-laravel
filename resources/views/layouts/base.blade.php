@@ -9,7 +9,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.0/dropzone.js"></script>
     @yield('styles')
     @vite('resources/css/app.css')
-
+    @livewireStyles
 </head>
 
 <body class="bg-gray-100">
@@ -40,6 +40,7 @@
         <h5>Created by Clement COUTAREL with Laravel and TailwindCSS</h5>
     </footer>
     @yield('scripts')
+    @livewireScripts
 </body>
 
 </html>
